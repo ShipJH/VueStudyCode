@@ -19,11 +19,11 @@ export default {
         addTodo: function(){
             console.log(this.newTodoItem);
             
-            //저장하는 로직 (로컬스토리지 저장)
-            localStorage.setItem(this.newTodoItem, this.newTodoItem);
-
-            
-            this.clearInput();  
+            if(this.newTodoItem !== ''){
+                //this.$emit('이벤트 이름', this.newTodoItem);
+                this.$emit('addTodoItem', this.newTodoItem);
+                this.clearInput();  
+            }
         },
         clearInput: function(){
             this.newTodoItem = '';
