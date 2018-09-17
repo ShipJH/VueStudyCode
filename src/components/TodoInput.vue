@@ -5,14 +5,41 @@
         <span class="addContainer" v-on:click="addTodo" >
             <i class="fas fa-plus-square addBtn"></i>
         </span>
+
+
+        <Modal v-if="showModal" @close="showModal = false">
+        <!--
+        you can use custom content here to overwrite
+        default content
+        -->
+            <!-- 슬롯 커스텀-->
+            <h3 slot="header">
+                경고~~!
+                <i class="closeModalBtn fas fa-times" @click="showModal = false"></i>
+            </h3>
+
+            <span slot="body">
+                입력값이 없습니다. 
+            </span>
+
+            <span slot="footer">
+                copy right.
+            </span>
+            
+
+        </Modal>        
     </div>
 </template>
 
 <script>
+import Modal from './common/Modal'
+
+
 export default {
     data:function() {
         return {
-            newTodoItem : ""
+            newTodoItem : "",
+            showModal: false
         }
     },
     methods:{
@@ -23,11 +50,16 @@ export default {
                 //this.$emit('이벤트 이름', this.newTodoItem);
                 this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();  
+            }else{
+                this.showModal = !this.showModal;
             }
         },
         clearInput: function(){
             this.newTodoItem = '';
         }
+    },
+    components: {
+        Modal: Modal
     }
 }
 </script>
@@ -58,6 +90,10 @@ export default {
     .addBtn{
         color: white;
         vertical-align: middle;
+    }
+
+    .closeModalBtn{
+        color: #42b983;
     }
 
 
