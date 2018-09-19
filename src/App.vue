@@ -20,24 +20,24 @@ import TodoFooter from './components/TodoFooter'
  
 
 export default {
-    data: function(){
+    data(){// function 삭제 (향상된 리터럴)
       return{
         todoItems: []
       }
       
     },
-    methods: {
-      addOneItem: function(todoItem) {
-        var obj = {completed: false , item : todoItem};
+    methods: { // function 삭제 (향상된 리터럴)
+      addOneItem(todoItem) {
+        const obj = {completed: false , item : todoItem};
         //저장하는 로직 (로컬스토리지 저장)
         localStorage.setItem(todoItem, JSON.stringify(obj));
         this.todoItems.push(obj);
       },
-      removeOneItem: function (todoItem, index) {
+      removeOneItem(todoItem, index) {
         localStorage.removeItem(todoItem.item);
         this.todoItems.splice(index,1);
       },
-      toggleOneItem: function(todoItem, index) {
+      toggleOneItem(todoItem, index) {
         // todoItem.completed = !todoItem.completed; 아래처럼 변경해 준다.
         this.todoItems[index].completed = !this.todoItems[index].completed;
 
@@ -45,17 +45,17 @@ export default {
         localStorage.removeItem(todoItem.item);
         localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
       },
-      clearAllItems: function () {
+      clearAllItems() {
         localStorage.clear();
         this.todoItems = [];
       }
     },
 
-     created: function () {
+     created() {
         console.log("created!");
 
         if(localStorage.length > 0){
-            for(var i=0; i < localStorage.length; i++){
+            for(let i=0; i < localStorage.length; i++){
                 if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
                     // this.todoItems.push(localStorage.key(i));
                     
@@ -71,11 +71,12 @@ export default {
 
 
 
-  components: {
-    'TodoHeader':TodoHeader,
-    'TodoInput':TodoInput,
-    'TodoList':TodoList,
-    'TodoFooter':TodoFooter
+  components: { 
+    //향상된 객체 리터럴 , 축약
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter
   }
 }
 </script>

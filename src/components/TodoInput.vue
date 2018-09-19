@@ -36,14 +36,14 @@ import Modal from './common/Modal'
 
 
 export default {
-    data:function() {
+    data() {// function 삭제 (향상된 리터럴)
         return {
             newTodoItem : "",
             showModal: false
         }
     },
-    methods:{
-        addTodo: function(){
+    methods:{// function 삭제 (향상된 리터럴)
+        addTodo(){
             console.log(this.newTodoItem);
             
             if(this.newTodoItem !== ''){
@@ -54,12 +54,13 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput: function(){
+        clearInput(){
             this.newTodoItem = '';
         }
     },
     components: {
-        Modal: Modal
+        //향상된 객체 리터럴 , 축약
+        Modal
     }
 }
 </script>

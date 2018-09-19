@@ -17,14 +17,14 @@
 export default {
     props: ['propsdata'],
 
-    methods:{
-        removeList: function(todoItem, index) {
+    methods:{ // function 삭제 (향상된 리터럴)
+        removeList(todoItem, index) {
             this.$emit("removeItem",todoItem, index);
             
             console.log(todoItem, index);
 
         },
-        toggleComplete: function (todoItem, index) {
+        toggleComplete(todoItem, index) {
             this.$emit('toggleOne', todoItem, index);
         }
     }
