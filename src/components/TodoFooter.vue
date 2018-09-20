@@ -7,11 +7,20 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
     methods:{
-        clearTodo: function(){
-            this.$emit('clearAll');
-        }
+
+        // 헬퍼사용으로 변경.
+        ...mapMutations({
+            clearTodo:'clearAll' 
+        })
+
+        // clearTodo: function(){
+        //     // this.$emit('clearAll'); // store.js에서 관리하도록 바꿈
+        //     this.$store.commit('clearAll');
+        // }
     }
 }
 </script>

@@ -8,10 +8,6 @@
 
 
         <Modal v-if="showModal" @close="showModal = false">
-        <!--
-        you can use custom content here to overwrite
-        default content
-        -->
             <!-- 슬롯 커스텀-->
             <h3 slot="header">
                 경고~~!
@@ -48,7 +44,9 @@ export default {
             
             if(this.newTodoItem !== ''){
                 //this.$emit('이벤트 이름', this.newTodoItem);
-                this.$emit('addTodoItem', this.newTodoItem);
+                //this.$emit('addTodoItem', this.newTodoItem); store.js의 뮤테이션스로 바꿈
+                const todoItem = this.newTodoItem.trim(); // 변경되지 않도록 안전하게 const 명명하여 store.js의 mutations 인자(payload)로 전달
+                this.$store.commit('addOneItem',todoItem);
                 this.clearInput();  
             }else{
                 this.showModal = !this.showModal;
