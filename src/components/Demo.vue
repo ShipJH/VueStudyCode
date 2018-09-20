@@ -18,6 +18,8 @@ export default {
             doublePrice,
             triplePrice
         })
+ 
+        
 
         // originalPrice(){
         //     return this.$store.getters.originalPrice ;

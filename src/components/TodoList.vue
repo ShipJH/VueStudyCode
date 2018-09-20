@@ -11,13 +11,13 @@
             </li>
         </transition-group>
 
-        <div> MapState Test value : {{this.stateNum}} </div>
+        <div> MapState Test value : {{this.getStateNumber}} </div>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-import { mapState } from 'vuex'
+
 
 
 export default {
@@ -55,11 +55,11 @@ export default {
         // 아래처럼 mapGetters를 import하여 사용한것
         //...mapGetters(['storedTodoItems'])
         ...mapGetters({
-            todoItems : 'storedTodoItems'
+            todoItems : 'storedTodoItems',
+            getStateNumber: 'getStateNumber'
         }),
         
-        // 아래는 State에서 값 바로 빼와서 this.stateNum 한 것.
-        ...mapState(['stateNum'])
+ 
     }
 
 }
