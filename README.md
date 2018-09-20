@@ -26,3 +26,7 @@ todoList001 = 컴포넌트 나누고 컴포넌트간 데이터 주고받고, 트
 todoList002 = ES6문법으로.  
 
 todoList003 = vuex적용.
+
+todoList004 = store 파일만 모듈화 하기.
+
+todoList005 = store 모듈화.
